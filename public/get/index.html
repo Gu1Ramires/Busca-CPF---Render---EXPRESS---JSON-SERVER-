@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lista de pessoas cadastradas">
+  <title>Listar · CRUD CPF</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2316161a'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='14' font-weight='700' fill='white' text-anchor='middle'%3E%7B%7D%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="page-get">
+  <header class="topbar">
+    <div class="container">
+      <a class="brand" href="/"><span class="brand-mark">{}</span>CRUD · CPF</a>
+      <nav class="nav" aria-label="Operações do CRUD">
+        <a href="/post/"><span class="method post">POST</span>Cadastrar</a>
+        <a href="/get/" class="active" aria-current="page"><span class="method get">GET</span>Listar</a>
+        <a href="/put/"><span class="method put">PUT</span>Editar</a>
+        <a href="/delete/"><span class="method delete">DELETE</span>Excluir</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="page-head">
+        <div class="endpoint"><span class="method get">GET</span>/api/pessoas</div>
+        <h1>Pessoas cadastradas</h1>
+        <p>Todos os registros do banco. Busque um CPF específico ou use os botões de cada linha para editar ou excluir.</p>
+      </div>
+
+      <div class="toolbar">
+        <form id="form-busca" class="search" novalidate>
+          <div class="field">
+            <label for="cpf-busca">Buscar por CPF</label>
+            <input type="text" id="cpf-busca" class="mono" data-mask="cpf" inputmode="numeric" placeholder="000.000.000-00" autocomplete="off">
+          </div>
+          <button type="submit" class="btn btn-primary">Buscar</button>
+          <button type="button" id="btn-todos" class="btn btn-ghost">Ver todos</button>
+        </form>
+        <div class="count" id="contador" aria-live="polite"></div>
+      </div>
+
+      <div id="alerta" class="alert" role="status"></div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>CPF / RG</th>
+              <th>Idade</th>
+              <th>Contato</th>
+              <th>Endereço</th>
+              <th>Cidade / UF</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-corpo">
+            <tr><td colspan="8" class="empty">Carregando registros…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">Programação para Internet · Express + JSON Server · Hospedado no Render</div>
+  </footer>
+
+  <script src="/js/comum.js"></script>
+  <script src="/get/get.js"></script>
+</body>
+</html>

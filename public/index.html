@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CRUD de pessoas com busca por CPF">
+  <title>CRUD CPF · Express + JSON Server</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2316161a'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='14' font-weight='700' fill='white' text-anchor='middle'%3E%7B%7D%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <a class="brand" href="/"><span class="brand-mark">{}</span>CRUD · CPF</a>
+      <nav class="nav" aria-label="Operações do CRUD">
+        <a href="/post/"><span class="method post">POST</span>Cadastrar</a>
+        <a href="/get/"><span class="method get">GET</span>Listar</a>
+        <a href="/put/"><span class="method put">PUT</span>Editar</a>
+        <a href="/delete/"><span class="method delete">DELETE</span>Excluir</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero">
+        <div class="endpoint"><span class="method get">API</span>/api/pessoas</div>
+        <h1>Cadastro de pessoas com busca por CPF</h1>
+        <p>CRUD completo com Node.js, Express e JSON Server. Cada operação do protocolo HTTP tem sua própria página.</p>
+      </section>
+
+      <div class="ops">
+        <a class="op" href="/post/">
+          <span><span class="method post">POST</span></span>
+          <h2>Cadastrar</h2>
+          <p>Adicione uma nova pessoa com dados pessoais e endereço.</p>
+          <span class="go">/post/ →</span>
+        </a>
+        <a class="op" href="/get/">
+          <span><span class="method get">GET</span></span>
+          <h2>Listar</h2>
+          <p>Veja todos os registros e filtre pelo CPF.</p>
+          <span class="go">/get/ →</span>
+        </a>
+        <a class="op" href="/put/">
+          <span><span class="method put">PUT</span></span>
+          <h2>Editar</h2>
+          <p>Busque pelo CPF e atualize os dados do cadastro.</p>
+          <span class="go">/put/ →</span>
+        </a>
+        <a class="op" href="/delete/">
+          <span><span class="method delete">DELETE</span></span>
+          <h2>Excluir</h2>
+          <p>Busque pelo CPF, confira e remova o registro.</p>
+          <span class="go">/delete/ →</span>
+        </a>
+      </div>
+
+      <div class="stats">
+        <span>Registros no banco: <strong id="total">–</strong></span>
+        <span>Banco de dados: <strong>db.json</strong></span>
+        <span>Chave de busca: <strong>CPF</strong></span>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">Programação para Internet · Express + JSON Server · Hospedado no Render</div>
+  </footer>
+
+  <script src="/js/comum.js"></script>
+  <script>
+    // Mostra quantos registros existem no banco
+    fetch(API)
+      .then((resposta) => resposta.json())
+      .then((pessoas) => { document.getElementById('total').textContent = pessoas.length; })
+      .catch(() => { document.getElementById('total').textContent = 'offline'; });
+  </script>
+</body>
+</html>

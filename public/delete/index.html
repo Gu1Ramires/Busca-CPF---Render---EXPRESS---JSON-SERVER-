@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Exclusão de registros por CPF">
+  <title>Excluir · CRUD CPF</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2316161a'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='14' font-weight='700' fill='white' text-anchor='middle'%3E%7B%7D%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="page-delete">
+  <header class="topbar">
+    <div class="container">
+      <a class="brand" href="/"><span class="brand-mark">{}</span>CRUD · CPF</a>
+      <nav class="nav" aria-label="Operações do CRUD">
+        <a href="/post/"><span class="method post">POST</span>Cadastrar</a>
+        <a href="/get/"><span class="method get">GET</span>Listar</a>
+        <a href="/put/"><span class="method put">PUT</span>Editar</a>
+        <a href="/delete/" class="active" aria-current="page"><span class="method delete">DELETE</span>Excluir</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="page-head">
+        <div class="endpoint"><span class="method delete">DELETE</span>/api/pessoas/:id</div>
+        <h1>Excluir cadastro</h1>
+        <p>Busque a pessoa pelo CPF, confira os dados e confirme a exclusão.</p>
+      </div>
+
+      <form id="form-busca" class="card" novalidate>
+        <div class="card-title">Busca por CPF</div>
+        <div class="search">
+          <div class="field">
+            <label for="cpf-busca">CPF do cadastro</label>
+            <input type="text" id="cpf-busca" name="cpfBusca" class="mono" data-mask="cpf" inputmode="numeric" placeholder="000.000.000-00" autocomplete="off">
+          </div>
+          <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+        <div id="alerta-busca" class="alert" role="status"></div>
+      </form>
+
+      <section id="ficha" class="card hidden" aria-labelledby="ficha-titulo">
+        <div class="card-title" id="ficha-titulo">Registro encontrado</div>
+        <dl class="record" id="ficha-dados"></dl>
+
+        <div class="danger-zone">
+          <strong>Atenção:</strong> esta ação remove o registro do banco e não pode ser desfeita.
+          <div class="actions">
+            <button type="button" id="btn-excluir" class="btn btn-danger">Excluir definitivamente</button>
+            <button type="button" id="btn-cancelar" class="btn btn-ghost">Cancelar</button>
+          </div>
+        </div>
+      </section>
+
+      <div id="alerta" class="alert" role="status"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">Programação para Internet · Express + JSON Server · Hospedado no Render</div>
+  </footer>
+
+  <script src="/js/comum.js"></script>
+  <script src="/delete/delete.js"></script>
+</body>
+</html>
